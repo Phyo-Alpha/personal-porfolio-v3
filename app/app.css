@@ -3,13 +3,41 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-special: "Special Gothic Expanded One", sans-serif;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-white dark:bg-gray-950 font-special;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
 }
+
+.clip-path-angled {
+    clip-path: polygon(
+        40px 0,
+        100% 0,
+        100% calc(100% - 40px),
+        calc(100% - 40px) 100%,
+        0 100%,
+        0 40px
+    );
+    transition: all 0.3s ease-in-out;
+}
+
+ul li::before {
+    content: "▹";
+    font-size: 30px;
+    position: absolute;
+    left: -30px;
+    color: #00df9a;
+}
+
+
+/* Add hover effect for the card
+.clip-path-angled:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(98, 235, 207, 0.2);
+} */

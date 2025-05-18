@@ -1,7 +1,7 @@
 import Hero from "~/components/main/hero";
 import type { Route } from "../+types/root";
 import { Skills } from "~/components/main/skills";
-import { StarsCanvas } from "~/components/sub/stars";
+import AboutMe from "~/components/main/about";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -12,10 +12,10 @@ export function meta({ }: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main>
+    <main className="flex flex-col gap-10 items-center">
       <Hero />
+      <AboutMe />
       <Skills />
-      {/* <StarsCanvas /> */}
     </main>
   );
 }
