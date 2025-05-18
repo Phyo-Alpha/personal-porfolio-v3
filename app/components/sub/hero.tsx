@@ -31,13 +31,6 @@ export const HeroContent = () => {
                 I&apos;m a Full Stack Software Engineer with experience in Website,
                 Mobile, and Software development. Check out my projects and skills.
             </motion.p>
-
-            <motion.a
-                variants={slideInFromLeft(1)}
-                className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
-            >
-                Learn more
-            </motion.a>
         </motion.div>
     );
 };

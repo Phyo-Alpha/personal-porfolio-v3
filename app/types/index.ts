@@ -26,4 +26,14 @@ type ProjectExperienceItem = {
     number: number;
 }
 
-export type { NavRouteItem, SocialItem, SkillItem, SectionItem };
+type ProjectItem = {
+    image: string;
+    title: string;
+    description: string;
+    technologies: string[];
+    githubLink?: string;
+    liveLink?: string;
+    isFeatured?: boolean;
+}
+
+export type { NavRouteItem, SocialItem, SkillItem, SectionItem, ProjectItem };
