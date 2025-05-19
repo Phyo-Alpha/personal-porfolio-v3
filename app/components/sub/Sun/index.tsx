@@ -171,7 +171,11 @@ const Sun = () => {
             premultipliedAlpha: false
         });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Set initial size based on device
+        const isMobile = window.innerWidth <= 768;
+        const height = isMobile ? window.innerHeight * 0.6 : window.innerHeight; // Reduce height on mobile
+        renderer.setSize(window.innerWidth, height);
         mountRef.current.appendChild(renderer.domElement);
         rendererRef.current = renderer;
 
@@ -197,17 +201,19 @@ const Sun = () => {
             const isMobile = window.innerWidth <= 768; // Mobile breakpoint
 
             if (isMobile) {
-                // Center the sun on mobile
+                // Center the sun on mobile with reduced size
                 sunRef.current.position.x = 0;
                 sunRef.current.position.y = 0;
+                sunRef.current.scale.set(0.7, 1, 0.7); // Reduce size on mobile
                 // Adjust camera position for mobile
-                cameraRef.current.position.z = 2.5; // Move camera back slightly for better view
+                cameraRef.current.position.z = 2.5;
             } else {
                 // Desktop positioning
                 const offsetX = 0;
                 const offsetY = aspectRatio > 1 ? -0.2 : -0.1;
                 sunRef.current.position.x = offsetX;
                 sunRef.current.position.y = offsetY;
+                sunRef.current.scale.set(1, 1, 1); // Normal size on desktop
                 cameraRef.current.position.z = 2;
             }
         };
@@ -234,7 +240,8 @@ const Sun = () => {
             if (!cameraRef.current || !rendererRef.current) return;
 
             const width = window.innerWidth;
-            const height = window.innerHeight;
+            const isMobile = width <= 768;
+            const height = isMobile ? window.innerHeight * 0.6 : window.innerHeight; // Reduce height on mobile
 
             cameraRef.current.aspect = width / height;
             cameraRef.current.updateProjectionMatrix();
@@ -266,7 +273,7 @@ const Sun = () => {
     return (
         <div
             ref={mountRef}
-            className='z-10'
+            className='z-10 h-[60vh] md:h-screen'
         />
     );
 };

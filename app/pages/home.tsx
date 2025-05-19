@@ -15,7 +15,7 @@ export function meta({ }: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-52 items-center">
+    <main className="flex flex-col gap-12 md:gap-22 lg:gap-32 xl:gap-52 items-center mt-12 justify-center">
       <Hero />
       <AboutMe />
       <Skills />
