@@ -37,7 +37,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           @import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
         </style>
       </head>
-      <body className="overflow-y-scroll overflow-x-hidden">
+      <body
+        suppressHydrationWarning
+        className="overflow-y-scroll overflow-x-hidden">
         <StarsCanvas />
         <TopBar />
         {children}

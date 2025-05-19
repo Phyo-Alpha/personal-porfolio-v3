@@ -5,6 +5,7 @@ import AboutMe from "~/components/main/about";
 import NoteWorthyProjects from "~/components/main/noteworth-projects";
 import { Contact } from "~/components/main/contact";
 import Footer from "~/components/layout/footer";
+import OtherProjects from "~/components/main/other-projects";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -20,6 +21,7 @@ export default function Home() {
       <AboutMe />
       <Skills />
       <NoteWorthyProjects />
+      <OtherProjects />
       <Contact />
       <Footer />
     </main>

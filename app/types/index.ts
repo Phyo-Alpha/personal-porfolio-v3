@@ -27,7 +27,7 @@ type ProjectExperienceItem = {
 }
 
 type ProjectItem = {
-    image: string;
+    image?: string;
     title: string;
     description: string;
     technologies: string[];
