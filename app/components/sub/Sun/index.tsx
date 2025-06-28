@@ -125,13 +125,13 @@ const fragmentShader = `
         baseNoise = clamp(baseNoise, 0.0, 1.0);
 
         float detail = fbmDetail(pos * 5.0 + vec3(10.0));
-        detail = detail * 0.9 + 0.9;
-        baseNoise += detail * 0.1;
+        detail = detail * 0.5 + 0.5;
+        baseNoise += detail * 0.05;
         baseNoise = clamp(baseNoise, 0.0, 1.0);
 
-        float glowFactor = pow(max(dot(vNormal, normalize(cameraPosition - vPosition)), 0.0), 2.0);
+        float glowFactor = pow(max(dot(vNormal, normalize(cameraPosition - vPosition)), 0.0), 1.5);
         vec3 glowColor = vec3(1.0, 0.8, 0.0);
-        vec3 radiantGlow = glowColor * glowFactor * 0.3;
+        vec3 radiantGlow = glowColor * glowFactor * 0.2;
 
         vec3 yellow = vec3(1.0, 1.0, 0.1);
         vec3 red = vec3(1.0, 0.0, 0.2);
