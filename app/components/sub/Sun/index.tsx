@@ -178,6 +178,30 @@ const Sun = () => {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+    // Handle WebGL context loss
+    const handleContextLost = () => {
+      console.log("WebGL context lost, attempting to restore...");
+    };
+
+    const handleContextRestored = () => {
+      console.log("WebGL context restored");
+      // Recreate materials and textures if needed
+      if (sunRef.current) {
+        (sunRef.current.material as THREE.ShaderMaterial).needsUpdate = true;
+      }
+    };
+
+    renderer.domElement.addEventListener(
+      "webglcontextlost",
+      handleContextLost,
+      false
+    );
+    renderer.domElement.addEventListener(
+      "webglcontextrestored",
+      handleContextRestored,
+      false
+    );
+
     // Set initial size based on device
     const isMobile = window.innerWidth <= 768;
     const height = isMobile ? window.innerHeight * 0.6 : window.innerHeight; // Reduce height on mobile
@@ -238,6 +262,12 @@ const Sun = () => {
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
+
+      // Check if context is lost
+      if (renderer.getContext().isContextLost()) {
+        return; // Skip rendering if context is lost
+      }
+
       timeRef.current += 0.01;
 
       if (sunRef.current) {
@@ -246,7 +276,11 @@ const Sun = () => {
           timeRef.current;
       }
 
-      renderer.render(scene, camera);
+      try {
+        renderer.render(scene, camera);
+      } catch (error) {
+        console.warn("Render error:", error);
+      }
     };
 
     animate();
@@ -272,6 +306,19 @@ const Sun = () => {
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
+
+      // Remove context loss event listeners
+      if (rendererRef.current) {
+        rendererRef.current.domElement.removeEventListener(
+          "webglcontextlost",
+          handleContextLost
+        );
+        rendererRef.current.domElement.removeEventListener(
+          "webglcontextrestored",
+          handleContextRestored
+        );
+      }
+
       if (mountRef.current && rendererRef.current) {
         mountRef.current.removeChild(rendererRef.current.domElement);
       }
