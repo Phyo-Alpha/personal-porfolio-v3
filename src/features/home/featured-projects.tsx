@@ -9,35 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { GithubIcon, LinkIcon } from "@hugeicons/core-free-icons";
-
-interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  image?: string;
-  websiteUrl?: string;
-  sourceUrl?: string;
-}
-
-const projects: Project[] = [
-  {
-    title: "Singapore Business Federation Survey Dashboard",
-    description:
-      "An enterprise-grade dashboard for (SBF) “Future-Ready Business” initiative, to manage surveys, business advisor assignments, and consultation hours, while quantifying business readiness using six SBF-defined indices to support nationwide digital transformation efforts.",
-    tags: [
-      "Next js",
-      "React",
-      "Elysia JS",
-      "Postgres SQL",
-      "Tailwind CSS",
-      "Shadcn UI",
-      "Drizzle ORM",
-      "Typescript",
-    ],
-    image: "/projects/sbf.png",
-    websiteUrl: "#",
-  },
-];
+import { projects } from "@/constant/projects";
 
 export function FeaturedProjects() {
   return (
@@ -49,7 +21,7 @@ export function FeaturedProjects() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <Card key={index} className="flex flex-col overflow-hidden pt-0">
             {project.image && (

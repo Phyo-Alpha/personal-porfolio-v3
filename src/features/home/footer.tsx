@@ -38,9 +38,7 @@ export function Footer() {
             </Button>
           </div>
 
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} personal-portfolio.com | privacy?
-          </p>
+          <p className="text-sm text-muted-foreground">© {currentYear}</p>
         </div>
       </div>
     </footer>
