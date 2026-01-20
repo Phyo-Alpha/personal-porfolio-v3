@@ -3,6 +3,8 @@ import { Navigation } from "@/features/home/navigation";
 import { Hero } from "./features/home/hero";
 import { Footer } from "@/features/home/footer";
 import { Career } from "./features/home/career";
+import { TechStackContainer } from "./features/home/tech-stack";
+import { TECHNOLOGIES } from "./constant/technologies";
 
 export function App() {
   return (
@@ -11,6 +13,7 @@ export function App() {
       <main className="flex-1">
         <Hero />
         <Career />
+        <TechStackContainer techs={TECHNOLOGIES} />
         <FeaturedProjects />
         {/* <RecentPosts /> */}
       </main>
