@@ -11,6 +11,11 @@ export const TECHNOLOGIES: TechStack[] = [
     name: "Next.js",
   },
   {
+    id: "13",
+    icon: "skill-icons:wordpress",
+    name: "Wordpress",
+  },
+  {
     id: "2",
     icon: "material-icon-theme:react",
     name: "React",
