@@ -8,14 +8,13 @@ import { TECHNOLOGIES } from "./constant/technologies";
 
 export function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col bg-background text-foreground">
       <Navigation />
       <main className="flex-1">
         <Hero />
         <Career />
         <TechStackContainer techs={TECHNOLOGIES} />
         <FeaturedProjects />
-        {/* <RecentPosts /> */}
       </main>
       <Footer />
     </div>
